@@ -17,7 +17,7 @@ public class SecurityConfig {
         httpSecurity
             //특정 경로 요청 허용, 거부
             .authorizeHttpRequests((auth) -> auth
-                .requestMatchers("/", "/login").permitAll()// 해당 요청 경로는 모두 open
+                .requestMatchers("/", "/login", "/loginProc").permitAll()// 해당 요청 경로는 모두 open
                 .requestMatchers("/admin").hasRole("ADMIN") // ADMIN 롤을 가짐
                 .requestMatchers("/my/**").hasAnyRole("ADMIN", "USER")// 유저 아이디(와일드카드 : ** ), 여러 롤 설정
                 .anyRequest().authenticated()// anyRequest(): 위의 경로 외 나머지, authenticated(): 로그인한 사용자만 접근
